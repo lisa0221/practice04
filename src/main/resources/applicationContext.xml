@@ -17,6 +17,7 @@
         <property name="password" value="123456" />
     </bean>
 
+<!--     entityManagerFactory說明這是配置的jpa -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 直接將設定寫在這裡，替代原本的 persistence.xml（即可將 persistence.xml 移除） -->
@@ -24,11 +25,11 @@
             <!-- 使用 Hibernate 作為 JPA 實作 -->
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <!-- scan Entity 位於的 package -->
+        <!-- scan Entity 位於的 package，哪些類別需要執行ORM映射 -->
         <property name="packagesToScan" value="org.tutorial.model"/>
         <property name="jpaProperties">
             <props>
-                <!-- SQL方言 -->
+                <!-- 使用MySQL方言 -->
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <!-- 是否要顯示實際操作資料庫時的SQL -->
                 <prop key="hibernate.show_sql">true</prop>
@@ -43,7 +44,7 @@
     <!-- bean post-processor for JPA annotations -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
-    <!-- Transaction Manager -->
+    <!-- Transaction Manager，設定jpa事務管理器。事務就是對一系列的資料庫操作進行統一的提交或回滾操作。這樣可以防止意外 -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>

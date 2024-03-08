@@ -7,13 +7,18 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+<!-- 這個文件定義了前端請求的處理，以及處理結果怎麼給到前端。處理，上層(頁面)-中間層(控制層)間的關係 -->
+
+
     <!-- scan base-package 及其子 package，將標註相關 annotation 的類別註冊為 Spring Bean -->
     <context:component-scan base-package="org.tutorial.controller"/>
 
     <!-- 啟用 @Controller annotation 支援 -->
+<!--     -這個標籤註冊了Spring MVC分發請求到控制器(controller)所必須的DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter實例 -->
     <mvc:annotation-driven />
 
-    <!-- viewResolver setting -->
+    <!-- viewResolver setting，試圖解析器 -->
+<!--     這句定義怎樣將處理結果回傳。返回/WEB-INF/view/下面的jsp頁面 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />

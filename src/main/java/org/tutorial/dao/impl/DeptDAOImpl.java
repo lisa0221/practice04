@@ -24,7 +24,7 @@ public class DeptDAOImpl implements DeptDAO {
 
     private static final String WILD_CARD = "%";
 
-    // 由 Spring 注入 EntityManager
+    // 由 Spring 注入 EntityManager，也就是藉由註解來取得EntityManager物件
     @PersistenceContext
     protected EntityManager entityManager;
 

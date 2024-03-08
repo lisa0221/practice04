@@ -41,7 +41,11 @@ public class EmpController {
     @PostMapping("/emp/getOne_For_Display")
     public String listOne(Model model, Integer empno) {
         EmpDO empDO = empService.getOneEmp(empno);
-        model.addAttribute("empVO", transformEmpVO(empDO));
+        if(empDO == null) {
+            model.addAttribute("errorMsgs" , "請輸入正確員工編號");
+        }else {
+            model.addAttribute("empVO", transformEmpVO(empDO));
+        }
         return "emp/listOne";
     }
 

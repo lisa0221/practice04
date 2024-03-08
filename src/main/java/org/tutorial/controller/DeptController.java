@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.tutorial.model.entity.DeptDO;
 import org.tutorial.model.entity.EmpDO;
@@ -24,7 +25,8 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
-    @GetMapping("/dept/listAll")
+    @RequestMapping("/dept/listAll")
+//    @GetMapping("/dept/listAll")
     public String listAll(Model model) {
         List<DeptDO> deptDOs = deptService.getAll();
         List<DeptVO> deptVOS = transformDeptVOs(deptDOs);
@@ -121,6 +123,7 @@ public class DeptController {
                     );
                     empVO.setSal(empDO.getSal());
                     empVO.setComm(empDO.getComm());
+                    System.out.println("empDO.getDeptDO=====" +empDO.getDeptDO().getDname());
                     empVO.setDeptVO(transformDeptVO(empDO.getDeptDO()));
                     return empVO;
                 })

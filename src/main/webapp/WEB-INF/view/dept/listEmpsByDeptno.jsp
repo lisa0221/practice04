@@ -42,14 +42,15 @@
                 <td>${empVO.comm}</td>
                 <td>${empVO.deptVO.deptno}【${empVO.deptVO.dname} - ${empVO.deptVO.loc}】</td>
                 <td>
-                    <form method="POST" action="${pageContext.request.contextPath}/emp/emp.do">
+                
+                    <form method="POST" action="/practice04/emp/getOne_For_Update">
                         <input type="submit" value="修改">
                         <input type="hidden" name="empno" value="${empVO.empno}">
                         <input type="hidden" name="action" value="getOne_For_Update">
                     </form>
                 </td>
                 <td>
-                    <form method="POST" action="${pageContext.request.contextPath}/emp/emp.do">
+                    <form method="POST" action="/practice04/emp/delete">
                         <input type="submit" value="刪除">
                         <input type="hidden" name="empno" value="${empVO.empno}">
                         <input type="hidden" name="action" value="delete">

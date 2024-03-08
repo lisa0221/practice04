@@ -21,11 +21,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "dept2")
-@Entity
+@Entity //標示此類別為永續類別
 @NamedQuery(name = "dept.all", query = "SELECT dept FROM DeptDO dept")
 public class DeptDO implements Serializable {
 
-    @Id
+    @Id //主鍵
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DEPTNO", nullable = false, columnDefinition = "NUMBER(3)")
     private Integer deptno;

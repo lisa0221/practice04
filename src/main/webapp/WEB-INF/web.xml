@@ -11,6 +11,7 @@
     </context-param>
 
     <!-- Initialize WebApplicationContext through ContextLoaderListener -->
+    <!-- 配置Spring監聽-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
